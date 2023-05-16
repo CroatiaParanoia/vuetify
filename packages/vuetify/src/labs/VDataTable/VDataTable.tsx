@@ -3,6 +3,7 @@ import './VDataTable.sass'
 
 // Components
 import { makeVDataTableFooterProps, VDataTableFooter } from './VDataTableFooter'
+import type { VDataTableHeadersSlots } from './VDataTableHeaders'
 import { makeVDataTableHeadersProps, VDataTableHeaders } from './VDataTableHeaders'
 import { makeVDataTableRowsProps, VDataTableRows } from './VDataTableRows'
 import { VTable } from '@/components/VTable'
@@ -28,11 +29,10 @@ import { genericComponent, propsFactory, useRender } from '@/util'
 import type { DataTableItem, InternalDataTableHeader } from './types'
 import type { VDataTableRowsSlots } from './VDataTableRows'
 
-export type VDataTableSlots = VDataTableRowsSlots & {
+export type VDataTableSlots = VDataTableRowsSlots & Omit<VDataTableHeadersSlots, 'default'> & {
   colgroup: [InternalDataTableHeader]
   default: []
   top: []
-  headers: []
   body: []
   tbody: []
   thead: []
